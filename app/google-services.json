@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "684145052958",
+    "firebase_url": "https://ringqrapp-default-rtdb.firebaseio.com",
+    "project_id": "ringqrapp",
+    "storage_bucket": "ringqrapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684145052958:android:a157bf1339b2ba70fe4d0f",
+        "android_client_info": {
+          "package_name": "com.example.ringqrapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASafZzxObS69bOfv1yupQeN4dIwjDVtIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="@dimen/qc_dp_80"
+    android:padding="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    android:layout_marginEnd="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_title_features_device"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="Các tính năng của thiết bị smart ring"
+                android:textColor="@color/black"
+                android:textSize="@dimen/qc_sp_20"
+                android:textStyle="bold"/>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_layout_device"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_features_device">
+
+                <ImageView
+                    android:id="@+id/img_device_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/img_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_device"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/img_device_icon"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_information_device"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_device_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Device name"
+                            android:textColor="#000"
+                            android:textSize="@dimen/qc_sp_14"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/txt_device_address"
+                            style="@style/TextAppearance.Material3.BodyLarge"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/qc_dp_2"
+                            android:maxLines="2"
+                            android:textColor="#000"
+                            android:textSize="@dimen/qc_sp_14"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:id="@+id/txt_device_rssi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textColor="#888"
+                            android:textSize="@dimen/qc_sp_12" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/status_connection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:background="#69F0AE"
+                        android:padding="5dp"
+                        android:text="connected"
+                        android:textColor="#FF9100"
+                        android:textSize="@dimen/qc_sp_14"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_disconnect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bg_background_features"
+                    android:ellipsize="end"
+                    android:padding="5dp"
+                    android:text="Disconnected"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/qc_sp_12"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout_device" />
+
+                <View
+                    android:id="@+id/item_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_layout_features"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/constraint_layout_device"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/txt_title_features"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Các tinh năng của thiết bị smart ring"
+                    android:textSize="@dimen/qc_sp_14"
+                    android:textAlignment="center"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardview_features"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardElevation="6dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintTop_toBottomOf="@id/txt_title_features"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txt_feature_"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tính năng 1: Lấy giá trị pin smart ring"
+                                android:textSize="@dimen/qc_sp_12"/>
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btn_get_battery"
+                                    android:layout_width="wrap_content"
+                                    android:paddingHorizontal="10dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    android:background="@drawable/bg_background_features"
+                                    android:text="Pin"/>
+                                <TextView
+                                    android:id="@+id/txt_battery_value"
+                                    android:layout_width="wrap_content"
+                                    app:layout_constraintStart_toEndOf="@id/btn_get_battery"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    android:gravity="center"
+                                    android:textColor="@android:color/holo_blue_dark"
+                                    android:layout_marginStart="30dp"
+                                    android:includeFontPadding="false"
+                                    android:layout_height="40dp"
+                                    android:text="0%"/>
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:contentDescription="@string/app_name"
+                                    app:layout_constraintStart_toEndOf="@id/txt_battery_value"
+                                    app:layout_constraintTop_toTopOf="@id/txt_battery_value"
+                                    app:layout_constraintBottom_toBottomOf="@id/txt_battery_value"
+                                    android:src="@drawable/baseline_battery_charging_full_24"
+                                    app:tint="#FBC02D"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/txt_feature_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="Tính năng 2: Theo dõi sức khỏe"
+                            android:textSize="@dimen/qc_sp_12"/>
+                        <Button
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="7dp"
+                            android:textSize="@dimen/qc_sp_12"
+                            android:background="@drawable/bg_background_features"
+                            android:text="lấy nhịp tim"/>
+
+                        <TextView
+                            android:id="@+id/txt_feature_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tính năng 2: Nhận thông báo từ điện thoại"
+                            android:textSize="@dimen/qc_sp_12"/>
+
+                        <TextView
+                            android:id="@+id/txt_feature_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tính năng 3: Điều khiển nhạc và camera"
+                            android:textSize="@dimen/qc_sp_12"/>
+
+                        <Button
+                            android:id="@+id/btn_save_device"
+                            android:layout_width="200dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:text="Lưu thông tin"
+                            android:background="@drawable/bg_background_features"
+                            android:layout_marginTop="20dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

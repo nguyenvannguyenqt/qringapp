@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Status: Disconnected"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/heartRateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Heart Rate: --"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/batteryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Battery: --%" 
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/connectButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_background_btn_scan"
+            android:layout_height="wrap_content"
+            android:text="Connect to Ring" />
+
+        <Button
+            android:id="@+id/measureButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_background_btn_scan"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="Start Measuring" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_disconnected"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_background_btn_scan"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Disconnected" />
+</LinearLayout>
