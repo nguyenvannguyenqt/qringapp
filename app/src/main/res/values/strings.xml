@@ -1,3 +1,173 @@
 <resources>
     <string name="app_name">RingQrApp</string>
+    <string name="name_app">HanaCare</string>
+
+    <string name="hint_email">Nhập email của bạn</string>
+    <string name="hint_password">Nhập password của bạn</string>
+    <string name="text_signin">Đăng nhập</string>
+    <string name="text_signup">Đăng ký</string>
+    <string name="text_accept">Xác nhận</string>
+    <string name="text_welcome">Chào mừng </string>
+    <string name="text_start_health_journey">Bắt đầu hành trình sức khỏe của bạn</string>
+    <string name="text_title_create_account">Tạo tài khoản</string>
+    <string name="text_forgot_password">Quên mật khẩu?</string>
+    <string name="text_title_email">E-mail</string>
+    <string name="text_title_password">Mật khẩu</string>
+    <string name="text_title_confirm_password">Xác nhận mật khẩu</string>
+    <string name="text_title_dialog_await">Vui lòng đợi...</string>
+
+    <string name="text_invalid_password">Mật khẩu có ít nhất 8 kí tự, bao gồm chữ số, chữ cái in hoa,in thường,và ít nhất 1 kí tự đặc biệt</string>
+    <string name="text_invalid_email">Email không hợp lệ</string>
+    <string name="text_email_exists">Email đã được sử dụng</string>
+    <string name="text_notify_change_password">Vui lòng cung cấp email đăng nhập,chúng tôi sẽ gởi link mật khẩu mới về email của bạn.</string>
+    <string name="text_password_not_match">Mật khẩu không khớp</string>
+    <string name="text_reset_password_failed">Đặt lại mật khẩu không thành công</string>
+    <string name="text_reset_password_success">Đặt lại mật khẩu thành công,vui lòng kiểm tra email của bạn</string>
+    <string name="text_error_register">Lỗi đăng ký không thành công</string>
+    <string name="text_error_login">Lỗi đăng nhập không thành công</string>
+    <string name="text_invalid_login_info">Tên đăng nhập hoặc mật khẩu không chính xác.</string>
+    <string name="text_email_not_registered">Email chưa được đăng ký</string>
+
+    <string name="message_required_email">Vui lòng nhập email</string>
+    <string name="message_required_password">Vui lòng nhập mật khẩu</string>
+    <string name="message_required_confirm_password">Vui lòng nhập lại mật khẩu</string>
+
+
+    <string name="text_information_user">Thông tin người dùng</string>
+    <string name="text_target">Mục tiêu</string>
+    <string name="text_delete_memory">Xóa bộ nhớ</string>
+
+
+    <!--Tôi-->
+    <string name="text_no_connect_device">Không được kết nối</string>
+    <string name="text_unbind">Ngắt kết nối</string>
+    <string name="health_tracking">Theo dõi sức khỏe</string>
+    <string name="take_photo">Chụp ảnh</string>
+    <string name="find_device">Tìm thiết bị</string>
+    <string name="theme_interface">Giao diện chủ đề</string>
+    <string name="unit_system_metric">Hệ thống đơn vị </string>
+    <string name="temperature_unit">Đơn vị nhiệt độ</string>
+    <string name="low_battery_reminder">Nhắc pin yếu</string>
+    <string name="healthy_connection">Kết nối lành mạnh</string>
+    <string name="background_operation_policy">Nguyên tắc hoạt động nền</string>
+    <string name="firmware_upgrade">Nâng cấp chương trình</string>
+    <string name="system_settings">Cài đặt hệ thống</string>
+    <string name="faq">Các câu hỏi thường gặp</string>
+
+
+    <string name="text_bottom_nav_home">Trang chủ</string>
+    <string name="text_bottom_nav_activity">Hoạt động</string>
+    <string name="text_bottom_nav_sleep">Ngủ</string>
+    <string name="text_bottom_nav_profile">Tôi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_theme">Giao diện chủ đề</string>
+    <string name="text_title_theme">Điều chỉnh giao diện để giảm độ chói và cho đôi mắt được nghỉ ngơi</string>
+    <string name="text_theme_light">Chế độ sáng</string>
+    <string name="text_theme_dark">Chế độ tối</string>
+    <string name="txt_setting_system">Sử dụng cài đặt hệ thống</string>
+    <string name="txt_content_theme_system">Chúng tôi sẽ tự điều chỉnh giao diện theo cài đặt hệ thống trên thiết bị của bạn</string>
+
+
+    <!-- home - action categories -->
+    <string name="text_categories_sleep">Giấc ngủ</string>
+    <string name="text_content_categories_sleep">Hãy đeo nhẫn thông minh để hiểu sự thay đổi nhịp tim của bạn</string>
+    <string name="text_categories_activity">Hoạt động</string>
+    <string name="text_categories_heart_rate">Nhịp tim</string>
+    <string name="text_content_categories_heart_rate">Hãy đeo nhẫn thông minh để hiểu sự thay đổi nhịp tim của bạn</string>
+    <string name="text_categories_temperature">Thanh nhiệt</string>
+    <string name="text_content_categories_temperature">Hãy đeo nhẫn thông minh để biết nhiệt độ cơ thể của bạn</string>
+    <string name="text_categories_oxygen">Oxy trong máu</string>
+    <string name="text_content_categories_oxygen">Hãy đeo nhẫn thông minh để biết tình trạng oxy trong máu của bạn</string>
+    <string name="text_categories_stress">Áp lực</string>
+    <string name="text_content_categories_stress">Hãy đeo nhẫn thông minh để biết tình trạng căng thẳng của bạn</string>
+    <string name="text_categories_congtaguration">Khen ngợi</string>
+    <string name="text_content_categories_congtaguration">Hãy đeo nhẫn thông minh để hiểu suy nghĩ của bạn</string>
+
+    <string name="text_info">Thông tin</string>
+    <string name="text_save">Lưu</string>
+    <string name="text_gender">Giới tính</string>
+    <string name="sex_female">Nữ</string>
+    <string name="sex_male">Nam</string>
+    <string name="text_cancel">Hủy bỏ</string>
+    <string name="text_height">Chiều cao</string>
+    <string name="text_content_target">Bạn có thể đặt mục tiêu hàng ngày cho mình dựa trên số bước , lượng calo và quãng đường</string>
+    <string name="kcal">kcal</string>
+    <string name="km">km</string>
+    <string name="step">bước</string>
+    <string name="text_title_faq">Các câu hỏi thường gặp</string>
+
+    <string name="faq_question_1">1.Sau khi tải ứng dụng không tìm thấy tín hiệu Bluetooth của nhẫn?</string>
+    <string name="faq_answer_1">Theo mặc định, nhẫn sẽ bị tắt khi xuất xưởng. Sau khi mở hộp, nhẫn cần được sạc và kích hoạt lần đầu tiên. Khi sạc, đèn báo sạc trên nhẫn sẽ hiển thị màu đỏ, cho biết nhẫn đã được bật. Đối với lần sử dụng đầu tiên, vui lòng tiếp tục sạc ít nhất 1 giờ cho đến khi đèn báo sạc trên nhẫn chuyển sang màu xanh lá cây.</string>
+
+    <string name="faq_question_2">2. Tại sao nhẫn luôn hiển thị bị ngắt kết nối khi mở QRing?</string>
+    <string name="faq_answer_2">
+        Để tiết kiệm tài nguyên hệ thống, một số hệ thống điện thoại di động có thể tắt QRing nếu người dùng chưa thiết lập bảo vệ chạy nền. Do đó, vui lòng tham khảo hướng dẫn bảo vệ chạy nền và bật chức năng bảo vệ chạy nền của QRing. Nếu QRing đã được bật mà vẫn hiển thị bị ngắt kết nối, có thể nhẫn đã tắt do pin yếu. Vui lòng sạc nhẫn trước khi kết nối lại.
+    </string>
+    <string name="faq_question_3">3. Tại sao không sạc được nhẫn?</string>
+    <string name="faq_answer_3">
+        1. Dùng dụng cụ để vệ sinh:
+            \n - Tăm bông:Tăm bông là một dụng cụ vệ sinh rất tiện lợi có thể được sử dụng để làm sạch bụi khỏi cổng sạc. Chỉ cần xoay nhẹ tăm bông để làm sạch bụi trên bề mặt.
+            \n - Tăm tre:Nếu có nhiều bụi xung quanh cổng sạc, bạn có thể dùng tăm tre để làm sạch. Nhưng hãy cẩn thận không sử dụng tăm tre quá dày để tránh làm hỏng cổng sạc.\n\n
+        2. Chất tẩy rửa:
+            \n - Nếu bụi bám trên cổng sạc cứng đầu, bạn có thể sử dụng một ít chất tẩy rửa để làm sạch. Nhưng hãy cẩn thận chọn một chất tẩy rửa nhẹ để tránh làm hỏng nhẫn. Đồng thời, hãy chú ý đến lượng và phương pháp sử dụng khi dùng chất tẩy rửa để tránh ăn mòn hoặc làm hỏng cổng sạc.\n\n
+        3. Thận trọng:
+            \n- Chú ý đến phương pháp và lực khi vệ sinh, không sử dụng các phương pháp quá mạnh để tránh làm hỏng cổng sạc. Nếu cổng sạc bị hỏng hoặc không thể làm sạch, chúng tôi khuyên bạn nên liên hệ với dịch vụ khách hàng để được giúp đỡ.
+    </string>
+    <string name="faq_question_4">4. Làm thế nào để sạc nhẫn?</string>
+    <string name="faq_answer_4">
+        Sử dụng củ sạc điện thoại tương thích hoặc cổng USB máy tính để kết nối cáp sạc hoặc hộp sạc để sạc nhẫn. Khi nhẫn đang sạc, đèn đỏ cho biết nó đang sạc, và đèn xanh cho biết pin đã được sạc đầy.
+(Hình ảnh minh họa: Đèn đỏ - Đang sạc, Đèn xanh - Sạc đầy)
+    </string>
+    <string name="faq_question_5">5. Dữ liệu giấc ngủ không đồng bộ được hoặc không chính xác?</string>
+    <string name="faq_answer_5">
+        (1) Nếu nhẫn không được đeo và chuyển sang chế độ ngủ, QRing sẽ không tạo ra dữ liệu giấc ngủ.\n
+        (2) Nhẫn đồng bộ với QRing sau khi người dùng thức dậy và không thể ghi lại dữ liệu giấc ngủ vào ban ngày.\n
+        (3) Người dùng đeo nhẫn và bắt đầu ghi lại (giấc ngủ sâu, ngủ nông, tỉnh giấc, v.v.) trong vòng 30 phút sau khi nằm xuống, và kết thúc theo dõi giấc ngủ sau khi thức dậy.\n
+        (4) Tất cả các bản ghi theo dõi giấc ngủ sẽ được xem trên giao diện giấc ngủ của QRing sau khi nhẫn được đồng bộ với QRing.
+    </string>
+
+    <string name="faq_question_6">6. Có sự chênh lệch giữa thời gian bắt đầu và kết thúc giấc ngủ được ghi lại và cảm nhận cá nhân</string>
+    <string name="faq_answer_6">Thời gian chìm vào giấc ngủ và thức dậy được đánh dấu bằng những thay đổi trong các đặc điểm sinh lý của cơ thể con người khi bước vào và thức dậy từ giấc ngủ. Trạng thái giấc ngủ được phát hiện thông qua các cảm biến bên trong nhẫn, điều này có thể có một sự chênh lệch thời gian nhất định so với nhận thức thực tế của một người.</string>
+
+    <string name="faq_question_7">7. Dữ liệu giấc ngủ hiển thị trạng thái tỉnh táo ở giữa đêm.</string>
+    <string name="faq_answer_7">Quá trình trạng thái ngủ của con người bao gồm các trạng thái ngủ khác nhau như ngủ nông, ngủ sâu và tỉnh táo. Ở trạng thái tỉnh táo, ý thức của hầu hết mọi người vẫn còn rất mơ hồ, và người dùng có thể không nhận thức được trạng thái có xu hướng tỉnh giấc của họ, dẫn đến sự chênh lệch giữa cảm nhận cá nhân và dữ liệu ghi nhận của nhẫn.</string>
+
+    <string name="faq_question_8">8. Nằm yên chơi điện thoại có bị nhận diện là đang ngủ không?</string>
+    <string name="faq_answer_8">Việc phát hiện giấc ngủ được thực hiện thông qua các cảm biến trên nhẫn để phát hiện các đặc điểm hoạt động của con người. Nếu người dùng duy trì cùng một tư thế trong một thời gian dài mà không di chuyển, nó có thể được nhận dạng là đã vào trạng thái ngủ.</string>
+
+    <string name="faq_question_9">9. Tại sao tôi đã bắt đầu đi bộ, nhưng nhẫn chưa bắt đầu đếm bước chân?</string>
+    <string name="faq_answer_9">Để giảm sai số đếm bước chân của nhẫn do các hoạt động tay thường xuyên như gõ bàn phím và chơi bài, nhẫn được đặt với giá trị ban đầu là 10, và chỉ khi số bước chân đạt 10 bước liên tiếp, việc đếm bước chân mới chính thức bắt đầu. Đồng thời, số bước chân thời gian thực trong giao diện chính của QRing sẽ thay đổi.</string>
+
+    <string name="faq_question_10">10. Trong trường hợp nào dữ liệu sẽ tự động kết nối và đồng bộ?</string>
+    <string name="faq_answer_10">Sau khi người dùng hoàn tất việc kết nối nhẫn lần đầu tiên, khi họ mở lại QRing, nhẫn sẽ tự động kết nối với QRing và bắt đầu đồng bộ dữ liệu; tại thời điểm này, người dùng không cần thực hiện bất kỳ hành động nào. Nếu không thể kết nối, vui lòng sạc và kiểm tra lại xem có thể kết nối với QRing và đồng bộ dữ liệu hay không.</string>
+
+    <string name="text_support">Giúp đỡ</string>
+
+
+    <string name="text_content_support_bluetooth">
+        Thiết bị đang kết nối:
+        \n 1.Đảm bảo Bluetooth trên điện thoại của bạn đã được bật
+        \n 2.Đảm bảo thiết bị có đủ điều kiện và để gần điện thoại
+        \n 3.Thử khởi động lại thiết bị và điện thoại rồi thử lại
+    </string>
+    <string name="text_agree">Đồng ý</string>
+    <string name="text_again_scan_device">Kết nối lại thiết bị</string>
+    <string name="text_manager_tag">Quản lý thẻ</string>
+    <string name="text_principle_background">Nguyên tắc hoạt động nền</string>
+    <string name="text_content_principle_background">
+        Tại sao bạn cần để ứng dụng chạy trong nền?\n\n
+        Khi sử dụng chức năng nhắc nhở tin nhắn, bạn cần để ứng dụng chạy trong nền.Nếu không nhận được lời nhắc về cuộc gọi,
+        tin nhắn văn bản
+    </string>
+
+
+    <string name="length_unit">Đặt đơn vị độ dài</string>
+    <string name="type_length_unit_m">Hệ mét(ki lô mét)</string>
+    <string name="value_length_unit_m">Hệ mét</string>
+    <string name="value_length_unit_anh">Hệ thống Anh</string>
+    <string name="type_length_unit_anh">Hệ thống Anh(feet,dặm)</string>
+
+    <string name="type_measure_temperature_c">°C</string>
+    <string name="type_measure_temperature_f">°F</string>
 </resources>

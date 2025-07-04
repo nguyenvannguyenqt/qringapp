@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/qc_dp_10"
+    android:background="@color/color_theme_dark"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    
+    <ImageView
+        android:id="@+id/img_menu_tag"
+        android:layout_width="@dimen/qc_dp_24"
+        android:layout_height="@dimen/qc_dp_24"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/menu_icon"
+        app:tint="@color/color_theme_light"/>
+
+    <TextView
+        android:id="@+id/txt_name_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/qc_dp_10"
+        android:textColor="@color/text_color_white"
+        android:textSize="@dimen/qc_sp_12"
+        app:layout_constraintTop_toTopOf="@id/img_menu_tag"
+        app:layout_constraintBottom_toBottomOf="@id/img_menu_tag"
+        app:layout_constraintStart_toEndOf="@id/img_menu_tag"
+        android:text="Nhịp tim"/>
+
+    <RadioButton
+        android:id="@+id/rb_checked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/qc_sp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txt_name_tag"
+        app:layout_constraintBottom_toBottomOf="@id/txt_name_tag"
+        android:buttonTint="@color/text_blue_journey"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/qc_dp_16"
+        android:layoutDirection="rtl"
+        android:checked="true" />
+</androidx.constraintlayout.widget.ConstraintLayout>

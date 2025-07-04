@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_theme_dark">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="16dp">
+
+        <!-- Header with date and calendar icon -->
+        <LinearLayout
+            android:id="@+id/llHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btnPreviousMonth"
+                android:layout_width="@dimen/qc_dp_40"
+                android:layout_height="@dimen/qc_dp_40"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_chevron_left"
+                app:tint="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvCurrentDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Th 2, 16 thg 12, 2025"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/qc_sp_12"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnCalendarPicker"
+                    android:layout_width="@dimen/qc_dp_30"
+                    android:layout_height="@dimen/qc_dp_30"
+                    android:layout_marginStart="@dimen/qc_dp_5"
+                    android:layout_gravity="center_vertical"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="@android:color/white" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnNextMonth"
+                android:layout_width="@dimen/qc_dp_40"
+                android:layout_height="@dimen/qc_dp_40"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@android:color/white" />
+
+        </LinearLayout>
+
+        <!-- Fixed day names row -->
+        <LinearLayout
+            android:id="@+id/llDayNames"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llHeader">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Hai"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Ba"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Tư"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Năm"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Sáu"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Bảy"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="CN"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+
+        <!-- Date Selector -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDateSelector"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llDayNames" />
+
+        <!-- Circular Progress Indicators -->
+        <LinearLayout
+            android:id="@+id/progress_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:background="@drawable/bg_background_card_device"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/qc_dp_24"
+            android:padding="@dimen/qc_dp_20"
+            android:weightSum="3"
+            app:layout_constraintTop_toBottomOf="@id/rvDateSelector"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Steps Circle -->
+            <include
+                layout="@layout/circular_progress_item"
+                android:id="@+id/steps_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <!-- Distance Circle -->
+            <include
+                layout="@layout/circular_progress_item"
+                android:id="@+id/distance_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp" />
+
+            <!-- Calories Circle -->
+            <include
+                layout="@layout/circular_progress_item"
+                android:id="@+id/calories_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qc_dp_30"
+            android:paddingVertical="@dimen/qc_dp_16"
+            android:paddingHorizontal="@dimen/qc_dp_16"
+            android:background="@drawable/bg_background_card_device"
+            app:layout_constraintTop_toBottomOf="@id/progress_number"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/txt_title_point_activity"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/qc_sp_12"
+                android:textColor="@color/text_color_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Điểm hoạt động"/>
+            <TextView
+                android:id="@+id/txt_value_point"
+                android:text="0"
+                android:textSize="@dimen/qc_sp_12"
+                android:layout_marginTop="@dimen/qc_dp_6"
+                android:textColor="@color/text_color_white"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/txt_title_point_activity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/txt_message_activity"
+                android:text="ít tập thể dục hơn"
+                android:textSize="@dimen/qc_sp_10"
+                android:layout_marginTop="@dimen/qc_dp_6"
+                app:layout_constraintBottom_toBottomOf="@id/txt_value_point"
+                android:textColor="@color/text_blue_journey"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/qc_dp_16"
+                app:layout_constraintStart_toEndOf="@id/txt_value_point"
+                app:layout_constraintTop_toBottomOf="@id/txt_title_point_activity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/img_next"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_arrow_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="@dimen/qc_dp_30"
+                android:layout_height="@dimen/qc_dp_30"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

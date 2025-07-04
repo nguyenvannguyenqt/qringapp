@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/color_theme_dark"
+    android:orientation="vertical">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/qc_dp_30"
+            android:layout_height="@dimen/qc_dp_30"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="Áp suất"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/qc_sp_14"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Tab Layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tab_container_background"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/tabDay"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_selected_background"
+                    android:gravity="center"
+                    android:text="Ngày"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/qc_sp_10"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tabWeek"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Tuần"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/qc_sp_10" />
+
+                <TextView
+                    android:id="@+id/tabMonth"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Tháng"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/qc_sp_10" />
+
+            </LinearLayout>
+
+            <!-- Date Time Picker -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qc_dp_16"
+                android:layout_marginBottom="@dimen/qc_dp_10">
+
+                <ImageView
+                    android:id="@+id/btnPrevious"
+                    android:layout_width="@dimen/qc_dp_26"
+                    android:layout_height="@dimen/qc_dp_26"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_chevron_left"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:tint="@color/text_secondary" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/btnNext"
+                    app:layout_constraintTop_toTopOf="@id/btnPrevious"
+                    app:layout_constraintBottom_toBottomOf="@id/btnPrevious"
+                    app:layout_constraintStart_toEndOf="@id/btnPrevious"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2025-06-26"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/qc_sp_12"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="13:00"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/qc_dp_4"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/qc_sp_10" />
+                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/btnCalendar"
+                        android:layout_width="@dimen/qc_dp_24"
+                        android:layout_height="@dimen/qc_dp_24"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/qc_dp_10"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_calendar"
+                        app:tint="@color/text_secondary" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnNext"
+                    android:layout_width="@dimen/qc_dp_26"
+                    android:layout_height="@dimen/qc_dp_26"
+                    android:contentDescription="@string/app_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/text_secondary" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Pressure Detection Toggle -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qc_dp_24"
+                android:background="@drawable/bg_background_card_device"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/qc_dp_30"
+                android:paddingHorizontal="@dimen/qc_dp_16">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Phát hiện áp suất"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/qc_sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_enable_pressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textOff=""
+                        android:textOn=""
+                        app:track="@drawable/switch_track"
+                        android:thumb="@drawable/switch_thumb"
+                        android:checked="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/img_icon"
+                        app:layout_constraintBottom_toBottomOf="@id/img_icon"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="@dimen/qc_dp_50"
+                    android:text="Bật thiết bị phát hiện áp suất theo thời gian để tự động phát hiện áp suất theo định kỳ, điều này có thể..."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/qc_sp_10" />
+
+            </LinearLayout>
+
+            <!-- Chart Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qc_dp_20"
+                android:background="@drawable/bg_background_card_device"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dữ liệu căng thẳng theo lịch trình"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/qc_sp_12"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="16dp" />
+
+
+            </LinearLayout>
+
+            <!-- detail data automatic -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qc_dp_20"
+                android:paddingVertical="@dimen/qc_dp_26"
+                android:paddingHorizontal="@dimen/qc_dp_16"
+                android:background="@drawable/bg_background_card_device">
+
+                <TextView
+                    android:id="@+id/txt_title_detail_data_automatic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Chi tiết dữ liệu"
+                    app:layout_constraintEnd_toStartOf="@id/txt_value_time"
+                    android:textColor="@color/text_color_white"
+                    android:textSize="@dimen/qc_sp_12"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/txt_value_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="02:15"
+                    app:layout_constraintTop_toTopOf="@id/txt_title_detail_data_automatic"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_title_detail_data_automatic"
+                    app:layout_constraintEnd_toStartOf="@id/btn_detail_data_automatic"
+                    android:textSize="@dimen/qc_sp_10"
+                    android:textColor="@color/text_secondary"/>
+                <ImageView
+                    android:id="@+id/btn_detail_data_automatic"
+                    android:layout_width="@dimen/qc_dp_22"
+                    android:layout_height="@dimen/qc_dp_22"
+                    app:layout_constraintTop_toTopOf="@id/txt_value_time"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_value_time"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="@dimen/qc_dp_20"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/text_secondary" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- measure -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+            </LinearLayout>
+
+            <!-- detail data 7 days -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qc_dp_20"
+                android:paddingVertical="@dimen/qc_dp_26"
+                android:paddingHorizontal="@dimen/qc_dp_16"
+                android:background="@drawable/bg_background_card_device">
+
+                <TextView
+                    android:id="@+id/txt_title_7_days"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Xu hướng 7 lần gần nhất"
+                    app:layout_constraintEnd_toStartOf="@id/txt_add_7_day"
+                    android:textColor="@color/text_color_white"
+                    android:textSize="@dimen/qc_sp_12"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/txt_add_7_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thêm"
+                    app:layout_constraintTop_toTopOf="@id/txt_title_7_days"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_title_7_days"
+                    app:layout_constraintEnd_toStartOf="@id/btn_detail_data_7_day"
+                    android:textSize="@dimen/qc_sp_10"
+                    android:textColor="@color/text_secondary"/>
+                <ImageView
+                    android:id="@+id/btn_detail_data_7_day"
+                    android:layout_width="@dimen/qc_dp_22"
+                    android:layout_height="@dimen/qc_dp_22"
+                    app:layout_constraintTop_toTopOf="@id/txt_add_7_day"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_add_7_day"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="@dimen/qc_dp_20"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/text_secondary" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

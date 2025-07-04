@@ -3,11 +3,84 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="text_color_white">#FFFFFFFF</color>
+    <color name="text_color_black">#FF000000</color>
 
+    <color name="text_hint_color">#BDBDBD</color>
+    <color name="color_loading">#FF2436A1</color>
+    <color name="color_icon_tint">#FF2436A1</color>
+    <color name="my_text_blue">#1565C0</color>
+    <color name="text_color_forgot_password">#29B6F6</color>
+    <color name="text_color_error">#D50000</color>
+
+    <color name="color_theme_dark">#FF0B175C</color>
+    <color name="color_bottom_navigation_theme_dark">#08134D</color>
+    <color name="color_theme_light">#FFFFFFFF</color>
+
+    <color name="text_blue_journey">#1E88E5</color>
 
     <!-- title bar -->
     <color name="title_bar_left">#2F2E41</color>
     <color name="title_bar_center">#2F2E41</color>
     <color name="title_bar_right">#FF6A00</color>
     <color name="title_bar_line">#ededed</color>
+
+    <color name="color_selected_item">#FF6A00</color>
+    <color name="text_color_info_attribute_user">#C0C8E7</color>
+
+
+    <color name="color_bottom_sheet">#050E42</color>
+
+
+
+    <color name="primary_dark_blue">#0C1C4A</color>
+    <color name="accent_blue">#00D4FF</color>
+    <color name="accent_red">#FF4444</color>
+    <color name="accent_green">#00FF88</color>
+
+    <!-- Text Colors -->
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+
+    <!-- Progress Colors -->
+    <color name="progress_blue">#1E00FF</color>
+    <color name="progress_green">#00FFAE</color>
+    <color name="progress_red">#FF0000</color>
+    <color name="progress_stroke">#1A2B5A</color>
+
+    <!-- Utility Colors -->
+    <color name="transparent">#00000000</color>
+
+    <color name="text_secondary">#A9AED1</color>
+
+
+
+    <!-- Sleep Stage Colors -->
+    <color name="deep_sleep">#C355F5</color>
+    <color name="light_sleep">#009CFF</color>
+    <color name="rem_sleep">#00FF9D</color>
+    <color name="awake">#FFC107</color>
+
+
+    <!-- Progress Colors -->
+    <color name="progress_awake">#FDE794</color>
+    <color name="progress_light_sleep">#A084FD</color>
+    <color name="progress_deep_sleep">#009CFF</color>
+
+    <!-- Date Selector -->
+    <color name="date_selected">#8B5CF6</color>
+    <color name="date_today">#10B981</color>
+    <color name="date_unselected">#4B5563</color>
+
+    <color name="text_disabled">#4B5563</color>
+
+
+
+
+    <color name="background_dark">#1a1a2e</color>
+    <color name="header_dark">#16213e</color>
+    <color name="card_dark">#0f3460</color>
+    <color name="tab_background">#8E95BE</color>
+
+
 </resources>

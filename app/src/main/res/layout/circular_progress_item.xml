@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <FrameLayout
+        android:id="@+id/flSleepScore"
+        android:layout_width="@dimen/qc_dp_100"
+        android:layout_height="@dimen/qc_dp_100">
+
+
+        <!-- Progress Circle Background -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circle_progress_steps" />
+
+
+        <!-- Center Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_progress_value"
+                android:layout_width="wrap_cont ent"
+                android:layout_height="wrap_content"
+                android:text="10000"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_progress_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng số bước"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_progress_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/10000"
+        android:textColor="@color/white_70"
+        android:textSize="10sp"
+        android:layout_marginTop="2dp" />
+
+</LinearLayout>

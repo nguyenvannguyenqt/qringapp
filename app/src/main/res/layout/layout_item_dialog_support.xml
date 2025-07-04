@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/qc_dp_14"
+        android:layout_marginEnd="@dimen/qc_dp_14"
+        android:background="@drawable/bg_dialog_request"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/text_support"
+            android:padding="@dimen/dp_4"
+            android:textSize="@dimen/qc_sp_10"
+            android:textColor="@color/text_color_white"/>
+        <TextView
+            android:id="@+id/txt_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qc_dp_10"
+            android:layout_marginTop="@dimen/qc_dp_12"
+            android:layout_marginEnd="@dimen/qc_dp_10"
+            android:text="@string/text_content_support_bluetooth"
+            android:textColor="@color/text_color_white"
+            android:textSize="@dimen/qc_sp_8" />
+
+        <Button
+            android:id="@+id/btn_accept"
+            android:layout_width="@dimen/qc_dp_150"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/qc_dp_10"
+            android:layout_height="@dimen/qc_dp_42"
+            android:layout_marginBottom="@dimen/qc_dp_10"
+            android:background="@null"
+            android:text="@string/text_agree"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/text_blue_journey"
+            android:textSize="@dimen/qc_sp_8"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

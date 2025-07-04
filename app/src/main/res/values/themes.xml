@@ -2,8 +2,69 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.RingQrApp" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Customize your light theme here. -->
+        <item name="android:textColor">@color/text_blue_journey</item>
+        <item name="android:textColorPrimary">@color/text_blue_journey</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.RingQrApp" parent="Base.Theme.RingQrApp" />
+
+    <style name="TextView.JourneyTitle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/text_blue_journey</item>
+    </style>
+
+    <style name="Theme.RingQrAppsdk30" parent="Base.Theme.RingQrApp" />
+
+    <style name="BottomNavigationTextStyle">
+        <item name="android:textSize">@dimen/qc_sp_12</item>
+    </style>
+
+    <style name="BottomNavigationActiveTextStyle">
+        <item name="android:textSize">@dimen/qc_sp_14</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="NavigationViewTextStyle">
+        <item name="android:textSize">@dimen/qc_sp_10</item>
+    </style>
+
+    <!-- NumberPicker Style -->
+    <style name="NumberPickerStyle">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">#80FFFFFF</item>
+        <item name="android:colorControlNormal">@android:color/white</item>
+        <item name="android:colorControlActivated">@android:color/holo_orange_dark</item>
+        <item name="android:colorAccent">#4A90E2</item>
+        <item name="android:colorControlHighlight">#40FFFFFF</item>
+        <item name="android:textSize">@dimen/qc_sp_10</item>
+        <item name="android:focusable">false</item>
+        <item name="android:clickable">false</item>
+
+        <!-- Thêm các thuộc tính cho divider -->
+        <item name="android:divider">@drawable/numberpicker_divider</item>
+        <item name="android:dividerHeight">3dp</item>  <!-- Độ dày của divider -->
+    </style>
+    <style name="NumberPickerStyle2">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">#80FFFFFF</item>
+        <item name="android:colorControlNormal">@android:color/transparent</item>
+        <item name="android:colorControlActivated">@android:color/holo_orange_dark</item>
+        <item name="android:colorAccent">#4A90E2</item>
+        <item name="android:textSize">@dimen/qc_sp_10</item>
+        <item name="android:focusable">false</item>
+        <item name="android:clickable">false</item>
+    </style>
+
+    <style name="TransparentBottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/color_theme_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_background_info_user"
+        android:padding="20dp">
+
+        <!-- Header với 3 nút -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="30dp">
+
+            <!-- Nút Hủy bỏ -->
+            <TextView
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/text_cancel"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/qc_sp_10"
+                android:gravity="start"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground" />
+
+            <!-- Tiêu đề -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/text_height"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/qc_sp_12"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <!-- Nút Lưu -->
+            <TextView
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lưu"
+                android:textColor="#4A90E2"
+                android:textSize="@dimen/qc_sp_10"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground" />
+
+        </LinearLayout>
+
+        <!-- Khu vực chọn chiều cao và đơn vị -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- NumberPicker cho giá trị chiều cao -->
+            <NumberPicker
+                android:id="@+id/height_value_picker"
+                android:layout_width="120dp"
+                android:layout_height="200dp"
+                android:layout_marginEnd="16dp"
+                android:theme="@style/NumberPickerStyle" />
+            <!-- Dấu gạch ngang giữa -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="—"
+                android:textColor="#4A90E2"
+                android:textSize="@dimen/qc_sp_20"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/qc_dp_10" />
+
+            <!-- NumberPicker cho đơn vị -->
+            <NumberPicker
+                android:id="@+id/height_unit_picker"
+                android:layout_width="120dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:theme="@style/NumberPickerStyle" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

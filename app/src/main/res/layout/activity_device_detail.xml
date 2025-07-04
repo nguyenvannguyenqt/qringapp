@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="10dp"
+    tools:context=".DeviceDetailActivity">
+
+    <TextView
+        android:id="@+id/txt_title_detail_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Chi tiết thiết bị"
+        android:textColor="@color/black"
+        android:textSize="@dimen/qc_sp_18"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_device_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_title_detail_device" />
+
+
+    <LinearLayout
+        android:id="@+id/linear_layout_device"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/img_device_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_device_icon"
+        app:layout_constraintTop_toTopOf="@id/img_device_icon">
+
+        <TextView
+            android:id="@+id/txt_device_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="@dimen/qc_sp_14"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/txt_device_address"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qc_dp_2"
+            android:textColor="#000"
+            android:textSize="@dimen/qc_sp_12"
+            android:textStyle="italic|normal" />
+
+        <TextView
+            android:id="@+id/txt_device_rssi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#888"
+            android:textSize="@dimen/qc_sp_12" />
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_device">
+
+        <Button
+            android:id="@+id/btn_get_battery"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_background_features"
+            android:paddingHorizontal="10dp"
+            android:text="Pin hiện tại"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_battery_value"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="0%"
+            android:textColor="@android:color/holo_blue_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_get_battery"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/baseline_battery_charging_full_24"
+            app:layout_constraintBottom_toBottomOf="@id/txt_battery_value"
+            app:layout_constraintStart_toEndOf="@id/txt_battery_value"
+            app:layout_constraintTop_toTopOf="@id/txt_battery_value"
+            app:tint="#FBC02D" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/edt_update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:inputType="text"
+        android:text="update text haha"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="@dimen/qc_sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_battery" />
+
+    <Button
+        android:id="@+id/btn_update_device"
+        android:layout_width="240dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="@dimen/qc_dp_15"
+        android:background="@drawable/bg_background_btn_scan"
+        android:text="Cập nhật"
+        android:textSize="@dimen/qc_sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_update" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

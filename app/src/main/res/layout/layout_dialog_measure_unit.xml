@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent">
+
+    <!-- Content -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/qc_dp_10"
+        android:layout_marginEnd="@dimen/qc_dp_10"
+        android:padding="16dp"
+        android:background="@drawable/bg_background_dialog_border_device"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/txt_type_value_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/qc_sp_10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="24dp" />
+
+        <ImageView
+            android:id="@+id/img_done"
+            android:layout_width="@dimen/qc_dp_26"
+            android:layout_height="@dimen/qc_dp_26"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_done"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_type_value_unit"
+            app:layout_constraintBottom_toBottomOf="@id/txt_type_value_unit"/>
+
+        <RadioGroup
+            android:id="@+id/rg_measure_unit"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_type_value_unit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/qc_dp_10"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_type_measure_unit_1"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/qc_sp_10"
+                android:buttonTint="@color/text_blue_journey"
+                android:paddingStart="0dp"
+                android:paddingEnd="@dimen/qc_dp_16"
+                android:layoutDirection="rtl"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rb_type_measure_unit_2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/qc_sp_10"
+                android:buttonTint="@color/text_blue_journey"
+                android:paddingStart="0dp"
+                android:paddingEnd="@dimen/qc_dp_16"
+                android:layoutDirection="rtl" />
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/txt_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_cancel"
+            android:layout_gravity="center"
+            android:textColor="@color/text_blue_journey"
+            android:textSize="@dimen/qc_sp_10"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/qc_dp_8"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/qc_dp_8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rg_measure_unit" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

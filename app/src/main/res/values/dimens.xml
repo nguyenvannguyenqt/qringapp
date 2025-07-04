@@ -61,4 +61,6 @@
     <dimen name="qc_sp_70">70sp</dimen>
     <dimen name="qc_sp_120">120sp</dimen>
     <dimen name="qc_sp_200">200sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="qc_dp_140">140dp</dimen>
 </resources>

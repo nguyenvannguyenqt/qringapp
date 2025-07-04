@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:transitionName="transition_register"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.register.SignUpActivity">
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/qc_dp_36"
+        android:layout_height="@dimen/qc_dp_36"
+        android:layout_marginStart="@dimen/qc_dp_20"
+        android:layout_marginTop="@dimen/qc_dp_20"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent
+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
+
+
+        <!-- Logo và tiêu đề -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/name_app"
+            android:visibility="gone"
+            android:includeFontPadding="false"
+            android:textColor="@color/my_text_blue"
+            android:textSize="@dimen/qc_sp_22"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/img_2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/qc_dp_16"
+            android:alpha="0.9"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:text="@string/text_start_health_journey"
+            android:textColor="@color/text_blue_journey"
+            android:textSize="@dimen/qc_sp_12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/text_title_create_account"
+            android:textColor="@color/my_text_blue"
+            android:textSize="@dimen/qc_sp_16"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_error_input"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/qc_dp_2"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:layout_marginBottom="@dimen/qc_dp_26"
+            android:textColor="@color/text_color_error"
+            android:textSize="@dimen/qc_sp_8"/>
+
+        <!-- Email Input -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_title_email"
+                android:textSize="@dimen/qc_sp_8"
+                android:textColor="@color/text_blue_journey"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@android:color/white"
+                app:boxStrokeColor="@color/white"
+                app:startIconContentDescription="Email Icon"
+                android:textColorHint="@color/text_hint_color"
+                app:hintTextColor="@android:color/holo_orange_dark"
+                app:startIconDrawable="@drawable/ic_mail"
+                app:startIconTint="#FF2436A1"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/qc_dp_16"
+                    android:background="@drawable/bg_background_edt_input"
+                    android:paddingStart="@dimen/qc_dp_48"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="@dimen/qc_sp_10"
+                    tools:ignore="TextFields" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Password Input -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/qc_dp_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_title_password"
+            android:textSize="@dimen/qc_sp_8"
+            android:textColor="@color/text_blue_journey"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/white"
+            app:endIconMode="password_toggle"
+            android:textColorHint="@color/text_hint_color"
+            app:startIconContentDescription="Email Icon"
+            app:startIconDrawable="@drawable/icons8_password"
+            app:startIconTint="#FF2436A1"
+            app:endIconTint="#FF2436A1"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_background_edt_input"
+                android:hint="@string/hint_password"
+                android:paddingStart="@dimen/qc_dp_48"
+                android:inputType="textPassword"
+                android:textColor="@color/text_color_black"
+                tools:ignore="TextFields"
+                android:padding="@dimen/qc_dp_16"
+                android:textSize="@dimen/qc_sp_10" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+
+        <!-- Password Input -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/qc_dp_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_title_confirm_password"
+            android:textSize="@dimen/qc_sp_8"
+            android:textColor="@color/text_blue_journey"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/white"
+            app:endIconMode="password_toggle"
+            android:textColorHint="@color/text_hint_color"
+            app:startIconContentDescription="Email Icon"
+            app:startIconDrawable="@drawable/icons8_password"
+            app:startIconTint="#FF2436A1"
+            app:endIconTint="#FF2436A1"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_background_edt_input"
+                android:hint="@string/hint_password"
+                android:paddingStart="@dimen/qc_dp_48"
+                android:inputType="textPassword"
+                android:textColor="@color/text_color_black"
+                tools:ignore="TextFields"
+                android:padding="@dimen/qc_dp_16"
+                android:textSize="@dimen/qc_sp_10" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+
+        <!-- Login Button -->
+        <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qc_dp_54"
+            android:layout_marginTop="@dimen/qc_dp_50"
+            android:layout_marginBottom="@dimen/qc_dp_5"
+            android:background="@drawable/bg_background_signin"
+            android:text="@string/text_signup"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color_white"
+            android:textSize="@dimen/qc_sp_12"
+            app:elevation="2dp" />
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qc_dp_54"
+            android:background="@android:color/transparent"
+            android:text="@string/text_signin"
+            android:textAllCaps="false"
+            android:textColor="#424242"
+            android:textSize="@dimen/qc_sp_12" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

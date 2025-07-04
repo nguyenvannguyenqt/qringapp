@@ -1,36 +1,39 @@
 [versions]
-agp = "8.8.0"
+agp = "8.2.2"
 androidNetworking = "1.0.2"
 androidNetworkingVersion = "1.0.4"
 baserecyclerviewadapterhelper = "3.0.4"
 eventbus = "3.2.0"
 fileselector = "2.1.6"
-firebaseAuthKtx = "23.2.1"
-firebaseFirestoreKtx = "25.1.4"
-firebaseStorageKtx = "21.0.2"
+firebaseAuthKtx = "22.3.1"
+firebaseFirestoreKtx = "24.10.2"
+firebaseStorageKtx = "20.3.0"
 gradlePlugin = "1.16.0"
 hiltAndroid = "2.51.1"
 hiltAndroidGradlePlugin = "2.51.1"
 hiltCompiler = "2.51.1"
-kotlin = "1.9.24"
-coreKtx = "1.15.0"
+kotlin = "1.9.22"
+coreKtx = "1.12.0"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-appcompat = "1.7.0"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+appcompat = "1.6.1"
 kotlinxCoroutinesAndroid = "1.7.3"
-kotlinxCoroutinesCore = "1.8.0-RC"
-kotlinxCoroutinesCoreVersion = "1.8.0-RC"
+kotlinxCoroutinesCore = "1.7.3"
+kotlinxCoroutinesCoreVersion = "1.7.3"
 loadingdialog = "v1.1.2"
 localbroadcastmanager = "1.0.0"
-material = "1.12.0"
-activity = "1.8.0"
-constraintlayout = "2.2.0"
-okhttp = "4.10.0"
-roomCoroutines = "2.1.0-alpha04"
+lottie = "6.2.0"
+material = "1.11.0"
+activity = "1.8.2"
+constraintlayout = "2.1.4"
+mpandroidchart = "v3.1.0"
+okhttp = "4.12.0"
+roomCoroutines = "2.6.1"
+roundedimageview = "2.3.0"
 xxpermissions = "18.2"
-googleGmsGoogleServices = "4.4.2"
-firebaseDatabase = "21.0.0"
+googleGmsGoogleServices = "4.4.0"
+firebaseDatabase = "20.3.0"
 
 [libraries]
 android-networking = { module = "com.amitshekhar.android:android-networking", version.ref = "androidNetworking" }
@@ -55,10 +58,13 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 kotlinx-coroutines-core-v180rc = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCoreVersion" }
 loadingdialog = { module = "com.github.ForgetAll:LoadingDialog", version.ref = "loadingdialog" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+roundedimageview = { module = "com.makeramen:roundedimageview", version.ref = "roundedimageview" }
 xxpermissions = { module = "com.github.getActivity:XXPermissions", version.ref = "xxpermissions" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 

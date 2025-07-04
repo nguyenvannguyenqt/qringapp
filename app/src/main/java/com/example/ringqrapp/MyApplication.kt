@@ -38,6 +38,8 @@ class MyApplication : Application() {
         //Khởi tạo Firebase SDK.
         FirebaseApp.initializeApp(this)
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+
+
     }
     fun getDataRingDeviceFb() : DatabaseReference
     {

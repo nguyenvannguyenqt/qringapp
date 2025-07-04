@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ringqrapp.databinding.ItemLayoutSaveDeviceBinding
+import com.example.ringqrapp.interfaces.IOnClickDeviceListener
 import com.example.ringqrapp.model.InformationRingDevice
 
-class DeviceSaveAdapter(private val mListDeviceSave : MutableList<InformationRingDevice>?)
+class DeviceSaveAdapter(
+    private val mListDeviceSave : MutableList<InformationRingDevice>?,
+    private val iOnClickDevice : IOnClickDeviceListener
+)
     : RecyclerView.Adapter<DeviceSaveAdapter.DeviceSveViewHolder>() {
 
 
@@ -26,10 +30,19 @@ class DeviceSaveAdapter(private val mListDeviceSave : MutableList<InformationRin
         val info = mListDeviceSave?.get(position)
         if (info != null) {
             holder.bind(info)
+            holder.binding.btnDetailDevice.setOnClickListener {
+                iOnClickDevice.onClickDevice(info)
+            }
+            holder.binding.btnDeleteDevice.setOnClickListener {
+                iOnClickDevice.onDeleteDevice(position, info)
+                //                mListDeviceSave?.removeAt(position)
+//                notifyItemRemoved(position)
+//                notifyItemRangeChanged(position, itemCount - position)
+            }
         }
     }
 
-    inner class DeviceSveViewHolder(private val binding : ItemLayoutSaveDeviceBinding)
+    inner class DeviceSveViewHolder(val binding : ItemLayoutSaveDeviceBinding)
         : RecyclerView.ViewHolder(binding.root) {
         // Define your ViewHolder properties and methods here
         @SuppressLint("SetTextI18n")

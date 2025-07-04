@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/qc_dp_10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_background_dialog_border_device"
+        android:orientation="vertical">
+
+        <!-- Header với 3 nút -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/qc_dp_10">
+
+            <!-- Nút Hủy bỏ -->
+            <ImageView
+                android:id="@+id/img_close"
+                android:layout_width="@dimen/qc_dp_24"
+                android:layout_height="@dimen/qc_dp_24"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_close"/>
+
+
+            <ImageView
+                android:id="@+id/img_done"
+                android:layout_width="@dimen/qc_dp_24"
+                android:layout_height="@dimen/qc_dp_24"
+                android:layout_gravity="end"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_done"/>
+
+            <!-- Nút Lưu -->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/qc_dp_20"
+            android:paddingStart="@dimen/qc_dp_18"
+            android:paddingEnd="@dimen/qc_dp_18"
+            android:paddingBottom="@dimen/qc_dp_50"
+            android:gravity="center"
+            android:text="Nếu bạn ngắt kết nối với thiết bị hiện tại để kết nối với thiết bị mới , một số dữ liệu hiện đang lưu sẽ bị mất"
+            android:textColor="@color/text_color_white"
+            android:textSize="@dimen/qc_sp_10"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

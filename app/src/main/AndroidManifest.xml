@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.ringqrapp">
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Thêm vào phần đầu manifest -->
     <uses-feature
         android:name="android.hardware.bluetooth"
@@ -47,6 +46,54 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="31">
         <activity
+            android:name=".activity.temperature.TemperatureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PressureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.feature_options.ConnectAppOtherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.feature_options.PrincipleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.FaqSleepActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ManagerTagActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.feature_options.FaqQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanDeviceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.target.TargetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.user.InfoUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.feature_options.ThemeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.register.SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.register.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.register.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeviceDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".SaveDeviceActivity"
             android:exported="false" />
         <activity
@@ -56,7 +103,7 @@
             android:name=".devices.DeviceBindActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainQringActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -75,6 +122,10 @@
                 <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
             </intent-filter>
         </receiver>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

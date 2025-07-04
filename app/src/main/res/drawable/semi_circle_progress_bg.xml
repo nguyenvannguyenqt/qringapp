@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Semi-circle background track -->
+    <path
+        android:pathData="M30,60 A30,30 0 0,1 90,60"
+        android:strokeColor="#40FFFFFF"
+        android:strokeWidth="4"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"/>
+
+    <!-- Progress arc (you can modify this for actual progress)
+    <path
+        android:pathData="M30,60 A30,30 0 0,1 45,35"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"/>-->
+
+
+</vector>

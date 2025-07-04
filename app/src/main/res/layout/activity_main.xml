@@ -62,4 +62,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:text="Disconnected" />
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/bg_background_btn_scan"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Đăng xuất" />
 </LinearLayout>

@@ -39,11 +39,15 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.concurrent.atomic.AtomicBoolean
 import com.example.ringqrapp.utils.BluetoothPermissionUtil
+import com.oudmon.ble.base.communication.rsp.StartHeartRateRsp
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 class RingManager private constructor(
     private val context: Context,
@@ -52,7 +56,8 @@ class RingManager private constructor(
     private val _connectionState = MutableStateFlow<ConnectionState>(ConnectionState.Disconnected)
     override val connectionState: StateFlow<ConnectionState> = _connectionState
 
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val scanTimeoutHandler = Handler(Looper.getMainLooper())
     private val isScanning = AtomicBoolean(false)
 
@@ -88,10 +93,13 @@ class RingManager private constructor(
         }
     }
 
-    override fun startScan(activity: Activity, callback: (RingDevice?) -> Unit) {
+
+    override fun startScan(activity: Activity,
+                           onDeviceFound: (RingDevice) -> Unit,
+                           onScanFinished: () -> Unit) {
         if (!BluetoothUtils.isEnabledBluetooth(context)) {
             _connectionState.value = ConnectionState.Error("Bluetooth is disabled")
-            callback(null)
+            onScanFinished()
             return
         }
 
@@ -108,10 +116,10 @@ class RingManager private constructor(
             .permission(permissions)
             .request(object : OnPermissionCallback {
                 override fun onGranted(permissions: MutableList<String>, all: Boolean) {
-                    if (all) startScanWithPermission(callback)
+                    if (all) startScanWithPermission(onDeviceFound, onScanFinished)
                     else {
                         _connectionState.value = ConnectionState.Error("Permissions denied")
-                        callback(null)
+                        onScanFinished()
                     }
                 }
 
@@ -119,12 +127,12 @@ class RingManager private constructor(
                     _connectionState.value = ConnectionState.Error(
                         if (never) "Permissions permanently denied" else "Permissions denied"
                     )
-                    callback(null)
+                    onScanFinished()
                 }
             })
     }
 
-    private fun startScanWithPermission(callback: (RingDevice?) -> Unit) {
+    private fun startScanWithPermission(onDeviceFound: (RingDevice) -> Unit, onScanFinished: () -> Unit) {
         if (isScanning.getAndSet(true)) {
             Log.d("RingManager", "Scan already in progress")
             return
@@ -132,7 +140,7 @@ class RingManager private constructor(
 
         scanTimeoutHandler.postDelayed({
             stopScan()
-            callback(null)
+            onScanFinished()
         }, 10000)
 
         BleScannerHelper.getInstance().scanDevice(
@@ -147,11 +155,16 @@ class RingManager private constructor(
                     Log.d("RingManager", "Scan stopped")
                     isScanning.set(false)
                     scanTimeoutHandler.removeCallbacksAndMessages(null)
+                    onScanFinished()
                 }
 
                 override fun onLeScan(device: BluetoothDevice?, rssi: Int, scanRecord: ByteArray?) {
                     val name = try {
-                        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH) == PackageManager.PERMISSION_GRANTED) {
+                        if (ActivityCompat.checkSelfPermission(
+                                context,
+                                Manifest.permission.BLUETOOTH
+                            ) == PackageManager.PERMISSION_GRANTED
+                        ) {
                             device?.name
                         } else {
                             "Unknown Device"
@@ -160,9 +173,12 @@ class RingManager private constructor(
                         null
                     } ?: return
                     Log.d("RingManager", "Scan device : ${device?.name ?: "Unknown Device"}")
-                    Log.d("RingManager", "Device found: $name, RSSI: $rssi , Address: ${device?.address}")
+                    Log.d(
+                        "RingManager",
+                        "Device found: $name, RSSI: $rssi , Address: ${device?.address}"
+                    )
                     if (name.startsWith("R")) {
-                        callback(RingDevice(name = name, address = device!!.address, rssi = rssi))
+                        onDeviceFound(RingDevice(name = name, address = device!!.address, rssi = rssi))
                     }
                 }
 
@@ -171,13 +187,15 @@ class RingManager private constructor(
                     _connectionState.value = ConnectionState.Error("Scan failed: $errorCode")
                     isScanning.set(false)
                     scanTimeoutHandler.removeCallbacksAndMessages(null)
-                    callback(null)
+                    onScanFinished()
                 }
 
                 override fun onParsedData(device: BluetoothDevice?, record: ScanRecord?) {
                     if (device == null || record == null) return
-
-                    Log.d("RingManager", "Parsed data from device: ${device.address} , RSSI: ${record.deviceName}")
+                    Log.d(
+                        "RingManager",
+                        "Parsed data from device: ${device.address} , RSSI: ${record.deviceName}"
+                    )
                 }
 
                 override fun onBatchScanResults(p0: MutableList<android.bluetooth.le.ScanResult>?) {
@@ -195,9 +213,12 @@ class RingManager private constructor(
                         } else {
                             device.name ?: "Unknown Device"
                         }
-                        Log.d("RingManager", "Batch scan result: $name, RSSI: $rssi, Address: ${device.address}")
+                        Log.d(
+                            "RingManager",
+                            "Batch scan result: $name, RSSI: $rssi, Address: ${device.address}"
+                        )
                         if (name.startsWith("R")) {
-                            callback(RingDevice(name = name, address = device.address, rssi = rssi))
+                            onDeviceFound(RingDevice(name = name, address = device.address, rssi = rssi))
                         }
                     }
                 }
@@ -227,7 +248,8 @@ class RingManager private constructor(
                 //BleOperateManager.getInstance().addNotifyListener()
                 _connectionState.value = ConnectionState.Connecting
             } catch (e: SecurityException) {
-                _connectionState.value = ConnectionState.Error("Bluetooth permission denied: ${e.message}")
+                _connectionState.value =
+                    ConnectionState.Error("Bluetooth permission denied: ${e.message}")
             } catch (e: Exception) {
                 Log.e("RingManager", "Connection failed: ${e.message}")
                 _connectionState.value = ConnectionState.Error("Connection failed: ${e.message}")
@@ -246,7 +268,8 @@ class RingManager private constructor(
                 BleOperateManager.getInstance().removeNotifyListener(ListenerKey.All)
                 _connectionState.value = ConnectionState.Disconnected
             } catch (e: SecurityException) {
-                _connectionState.value = ConnectionState.Error("Bluetooth permission denied: ${e.message}")
+                _connectionState.value =
+                    ConnectionState.Error("Bluetooth permission denied: ${e.message}")
             } catch (e: Exception) {
                 Log.e("RingManager", "Disconnect failed: ${e.message}")
                 _connectionState.value = ConnectionState.Error("Disconnect failed: ${e.message}")
@@ -259,121 +282,198 @@ class RingManager private constructor(
             if (connected) ConnectionState.Connected else ConnectionState.Disconnected
     }
 
-    override fun startHeartRateMeasurement(callback: (Int) -> Unit) {
+    override suspend fun startHeartRateMeasurement(): StartHeartRateRsp? = suspendCancellableCoroutine { continuation ->
         if (!BluetoothPermissionUtil.hasBluetoothPermissions(context)) {
-            callback(-1)
-            return
+            continuation.resume(null)
+            return@suspendCancellableCoroutine
         }
-        scope.launch {
-            try {
-                BleOperateManager.getInstance().manualModeHeart(
-                    { res -> if (res.errCode.toInt() == 0) callback(res.value) },
-                    false
-                )
-            } catch (e: SecurityException) {
-                Log.e("RingManager", "Heart rate permission denied: ${e.message}")
-                callback(-1)
-            } catch (e: Exception) {
-                Log.e("RingManager", "Heart rate error: ${e.message}")
-                callback(-1)
-            }
+        try {
+            BleOperateManager.getInstance().manualModeHeart(
+                { res ->
+                    if (res.errCode.toInt() == 0) {
+                        continuation.resume(res)
+                    } else {
+                        continuation.resume(null)
+                    }
+                },
+                false
+            )
+        } catch (e: SecurityException) {
+            Log.e("RingManager", "Heart rate permission denied: ${e.message}")
+            continuation.resumeWithException(e)
+        } catch (e: Exception) {
+            Log.e("RingManager", "Heart rate error: ${e.message}")
+            continuation.resumeWithException(e)
         }
     }
 
-    override fun startBloodOxygenMeasurement(callback: (Int) -> Unit) {
+    override fun startHeartRateMeasurementCallBack(callback: (StartHeartRateRsp?) -> Unit) {
         if (!BluetoothPermissionUtil.hasBluetoothPermissions(context)) {
-            callback(-1)
+            callback(null)
             return
         }
-        scope.launch {
-            try {
-                BleOperateManager.getInstance().manualModeSpO2(
-                    { res -> if (res.errCode.toInt() == 0) callback(res.value) },
-                    false
-                )
-            } catch (e: SecurityException) {
-                Log.e("RingManager", "SpO2 permission denied: ${e.message}")
-                callback(-1)
-            } catch (e: Exception) {
-                Log.e("RingManager", "SpO2 error: ${e.message}")
-                callback(-1)
-            }
+        try {
+            BleOperateManager.getInstance().manualModeHeart(
+                { res ->
+                    if (res.errCode.toInt() == 0) {
+                        callback(res)
+                    } else {
+                        callback(null)
+                    }
+                },
+                false
+            )
+        } catch (e: SecurityException) {
+            Log.e("RingManager", "Heart rate permission denied: ${e.message}")
+            callback(null)
+        } catch (e: Exception) {
+            Log.e("RingManager", "Heart rate error: ${e.message}")
+            callback(null)
         }
     }
 
-    // hàm HrcMeasurement được sử dụng để đo nhịp tim,
-    // SpO2Measurement để đo nồng độ oxy trong máu,
-    // HrvMeasurement để đo biến thiên nhịp tim,
-    // TemperatureMeasurement để đo nhiệt độ cơ thể, và SleepSync để đồng bộ hóa dữ liệu giấc ngủ.
-    override fun startHrvMeasurement(callback: (Int) -> Unit) {
+    override suspend fun startBloodOxygenMeasurement(): StartHeartRateRsp? = suspendCancellableCoroutine { continuation ->
         if (!BluetoothPermissionUtil.hasBluetoothPermissions(context)) {
-            callback(-1)
-            return
+            continuation.resume(null)
+            return@suspendCancellableCoroutine
         }
-        scope.launch {
-            try {
-                BleOperateManager.getInstance().manualModeHrv(
-                    { res -> if (res.errCode.toInt() == 0) callback(res.hrv ?: 0) },
-                    false
-                )
-
-            } catch (e: SecurityException) {
-                Log.e("RingManager", "HRV permission denied: ${e.message}")
-                callback(-1)
-            } catch (e: Exception) {
-                Log.e("RingManager", "HRV error: ${e.message}")
-                callback(-1)
-            }
+        try {
+            BleOperateManager.getInstance().manualModeSpO2(
+                { res ->
+                    if (res.errCode.toInt() == 0) {
+                        continuation.resume(res)
+                    } else {
+                        continuation.resume(null)
+                    }
+                },
+                false
+            )
+        } catch (e: SecurityException) {
+            Log.e("RingManager", "SpO2 permission denied: ${e.message}")
+            continuation.resumeWithException(e)
+        } catch (e: Exception) {
+            Log.e("RingManager", "SpO2 error: ${e.message}")
+            continuation.resumeWithException(e)
         }
     }
 
-    override fun startTemperatureMeasurement(callback: (Float) -> Unit) {
+    override suspend fun startBloodPressureMeasurement(): Pair<Int, Int>? = suspendCancellableCoroutine { continuation ->
         if (!BluetoothPermissionUtil.hasBluetoothPermissions(context)) {
-            callback(-1f)
-            return
+            Log.e("RingManager", "Blood Pressure - No Bluetooth permissions.")
+            continuation.resume(null)
+            return@suspendCancellableCoroutine
         }
-        scope.launch {
-            try {
-                BleOperateManager.getInstance().manualTemperature(
-                    { res -> if (res.errCode.toInt() == 0) callback(res.value.toFloat()) },
-                    false
-                )
-            } catch (e: SecurityException) {
-                Log.e("RingManager", "Temperature permission denied: ${e.message}")
-                callback(-1f)
-            } catch (e: Exception) {
-                Log.e("RingManager", "Temperature error: ${e.message}")
-                callback(-1f)
-            }
+        try {
+            BleOperateManager.getInstance().manualModeBP(
+                { res ->
+                    if (res != null && res.errCode.toInt() == 0) {
+                        val systolic = res.sbp
+                        val diastolic = res.dbp
+                        val bloodPressure = Pair(systolic, diastolic)
+                        Log.d("RingManager", "Blood Pressure measured: SBP=$systolic, DBP=$diastolic")
+                        continuation.resume(bloodPressure)
+                    } else {
+                        Log.e("RingManager", "Blood Pressure measurement failed. Error code: ${res?.errCode}")
+                        continuation.resume(null)
+                    }
+                },
+                false
+            )
+        } catch (e: SecurityException) {
+            Log.e("RingManager", "Blood Pressure permission denied: ${e.message}")
+            continuation.resumeWithException(e)
+        } catch (e: Exception) {
+            Log.e("RingManager", "Blood Pressure measurement error: ${e.message}")
+            continuation.resumeWithException(e)
         }
     }
 
-    override fun startSleepSync(callback: (String) -> Unit) {
+    override suspend fun startHrvMeasurement(): Int = suspendCancellableCoroutine { continuation ->
         if (!BluetoothPermissionUtil.hasBluetoothPermissions(context)) {
-            callback("")
-            return
+            continuation.resume(-1)
+            return@suspendCancellableCoroutine
         }
-        scope.launch {
-            try {
-                val deviceAddress = DeviceManager.getInstance().deviceAddress
-                val dayOffset = 0 // 0 = hôm nay, 1 = hôm qua, 2 = hôm kia (tối đa 7 ngày)
-                SleepAnalyzerUtils.getInstance().syncSleepReturnSleepDisplay(
-                    deviceAddress,
-                    dayOffset,
-                    object : ISleepCallback {
-                        override fun sleepDisplay(p0: SleepDisplay?) {
-                            Log.d("RingManager", "Sleep synced: $p0")
-                            callback(p0.toString())
+        try {
+            BleOperateManager.getInstance().manualModeHrv(
+                { res ->
+                    if (res.errCode.toInt() == 0) continuation.resume(res.hrv ?: 0)
+                    else continuation.resume(-1)
+                },
+                false
+            )
+        } catch (e: SecurityException) {
+            Log.e("RingManager", "HRV permission denied: ${e.message}")
+            continuation.resumeWithException(e)
+        } catch (e: Exception) {
+            Log.e("RingManager", "HRV error: ${e.message}")
+            continuation.resumeWithException(e)
+        }
+    }
+
+    override suspend fun startTemperatureMeasurement(): Float = suspendCancellableCoroutine { continuation ->
+        if (!BluetoothPermissionUtil.hasBluetoothPermissions(context)) {
+            continuation.resume(-1f)
+            return@suspendCancellableCoroutine
+        }
+        try {
+            BleOperateManager.getInstance().manualTemperature(
+                { res ->
+                    if (res.errCode.toInt() == 0) continuation.resume(res.value.toFloat())
+                    else continuation.resume(-1f)
+                },
+                false
+            )
+        } catch (e: SecurityException) {
+            Log.e("RingManager", "Temperature permission denied: ${e.message}")
+            continuation.resumeWithException(e)
+        } catch (e: Exception) {
+            Log.e("RingManager", "Temperature error: ${e.message}")
+            continuation.resumeWithException(e)
+        }
+    }
+
+    override suspend fun startSleepSync(): String = suspendCancellableCoroutine { continuation ->
+        if (!BluetoothPermissionUtil.hasBluetoothPermissions(context)) {
+            continuation.resume("")
+            return@suspendCancellableCoroutine
+        }
+        try {
+            val deviceAddress = DeviceManager.getInstance().deviceAddress
+            val dayOffset = 0 // 0 = hôm nay, 1 = hôm qua, 2 = hôm kia (tối đa 7 ngày)
+            SleepAnalyzerUtils.getInstance().syncSleepReturnSleepDisplay(
+                deviceAddress,
+                dayOffset,
+                object : ISleepCallback {
+                    override fun sleepDisplay(p0: SleepDisplay?) {
+                        Log.d("RingManager", "Sleep synced: $p0")
+                        p0?.let {
+                            Log.d("RingManager", "Sleep data: ${it.sleepTime}")
+                            val totalSleepMinutes: Int = it.totalSleepDuration // tổng thời gian ngủ thực tế(Ngủ sâu + Ngủ nông + ngủ REM)
+                            val deepSleepMinutes: Int = it.deepSleepDuration // thời gian ngủ sâu
+                            val lightSleepMinutes: Int = it.shallowSleepDuration // thời gian ngủ nông
+                            val remSleepMinutes: Int = it.rapidDuration // thời gian ngủ REM
+                            val awakeMinutes: Int = it.awakeDuration // tổng thời gian thức giấc giữa đêm
+                            val startTimeSleep = it.sleepTime // thời gian bắt đầu ngủ
+                            val wakeUpTimeRaw: Int = it.wakeTime // thời gian thức giấc
+                            val awakeCount: Int = it.wakingCount // số lần thức giấc
+                            val sleepDetailsList: List<SleepDisplay.SleepDataBean> = it.list // danh sách các lần ngủ
+                            val recordId: Int = it.id // i d của lần ngủ
+                            val deviceAddressTmp: String = it.address // địa chỉ của thiết bị
+                            val totalDaysWithData: Int = it.totalDays // tổng số ngày có dữ liệu ngủ
+                            continuation.resume(it.toString())
+                        } ?: run {
+                            Log.e("RingManager", "Sleep data is null")
+                            continuation.resume("")
                         }
                     }
-                )
-            } catch (e: SecurityException) {
-                Log.e("RingManager", "Sleep sync permission denied: ${e.message}")
-                callback("")
-            } catch (e: Exception) {
-                Log.e("RingManager", "Sleep sync error: ${e.message}")
-                callback("")
-            }
+                }
+            )
+        } catch (e: SecurityException) {
+            Log.e("RingManager", "Sleep sync permission denied: ${e.message}")
+            continuation.resumeWithException(e)
+        } catch (e: Exception) {
+            Log.e("RingManager", "Sleep sync error: ${e.message}")
+            continuation.resumeWithException(e)
         }
     }
 
